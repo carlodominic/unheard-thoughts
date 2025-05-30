@@ -16,19 +16,23 @@ export default function Hero() {
       <div className="relative pt-24 pb-32 sm:pt-32 sm:pb-40">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-8 tracking-tight">
-              Unheard
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Thoughts:
-              </span>{" "}
-              Your Voice
-            </h1>
+            {/* ✅ Wrap the heading in a flex container for perfect centering */}
+            <div className="flex flex-col items-center justify-center">
+              <h1 className="text-5xl sm:text-4.5xl font-bold text-gray-900 mb-8 tracking-tight text-center">
+                Unheard
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  Thoughts:
+                </span>{" "}
+                Your Voice
+              </h1>
+            </div>
 
-            <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed text-center">
               Your Story Turn whispers into words and ideas into impact.
               Write, share, and connect with the world through a platform built for those who have something meaningful to say.
             </p>
 
+            {/* Buttons and other content remain unchanged */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/sign-up"

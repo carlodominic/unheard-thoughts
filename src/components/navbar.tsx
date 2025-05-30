@@ -13,7 +13,7 @@ export default async function Navbar() {
 
   return (
     <nav className="w-full border-b border-gray-200 bg-white py-4 sticky top-0 z-50 shadow-sm">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <div className="container mx-auto px-4 mt-2 flex flex-col md:flex-row justify-between items-center">
         {/* Navbar Header */}
         <div className="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
           <Link
