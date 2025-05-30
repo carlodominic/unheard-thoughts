@@ -3,7 +3,11 @@ import PostForm from "@/components/post-form";
 import { redirect } from "next/navigation";
 import { createClient } from "../../../../../supabase/server";
 
-export default async function EditPost({ params }: { params: { id: string } }) {
+export default async function EditPost({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const supabase = await createClient();
 
   const {
@@ -14,11 +18,12 @@ export default async function EditPost({ params }: { params: { id: string } }) {
     return redirect("/sign-in");
   }
 
-  // Fetch the post
+  const { id } = await params;
+
   const { data: post, error } = await supabase
     .from("posts")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", id) 
     .eq("author_id", user.id)
     .single();
 
@@ -26,7 +31,6 @@ export default async function EditPost({ params }: { params: { id: string } }) {
     return redirect("/dashboard");
   }
 
-  // Fetch post categories
   const { data: postCategories } = await supabase
     .from("post_categories")
     .select("category_id")

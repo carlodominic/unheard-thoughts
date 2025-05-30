@@ -5,17 +5,20 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "lucide-react";
 
+// ✅ Updated type: params is now a Promise
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
+// ✅ Resolve params in generateMetadata
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params; // ✅ Resolve the Promise
   const supabase = await createClient();
 
   const { data: post } = await supabase
     .from("posts")
     .select("title, excerpt")
-    .eq("slug", params.slug)
+    .eq("slug", slug) // ✅ Use resolved slug
     .eq("published", true)
     .single();
 
@@ -32,19 +35,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// ✅ Resolve params in the component
 export default async function PostPage({ params }: Props) {
+  const { slug } = await params; // ✅ Resolve the Promise
   const supabase = await createClient();
 
-  // Fetch the post
+  // Fetch the post using resolved slug
   const { data: post, error } = await supabase
     .from("posts")
-    .select(
-      `
+    .select(`
       *,
       users!inner(name, full_name, email)
-    `,
-    )
-    .eq("slug", params.slug)
+    `)
+    .eq("slug", slug) // ✅ Use resolved slug
     .eq("published", true)
     .single();
 
@@ -55,11 +58,9 @@ export default async function PostPage({ params }: Props) {
   // Fetch post categories
   const { data: postCategories } = await supabase
     .from("post_categories")
-    .select(
-      `
+    .select(`
       categories!inner(name, slug)
-    `,
-    )
+    `)
     .eq("post_id", post.id);
 
   const categories = postCategories?.map((pc) => pc.categories) || [];
