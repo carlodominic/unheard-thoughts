@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { SubmitButton } from "@/components/submit-button";
+import { Brain, Eye, HeartHandshake } from "lucide-react";
 import { useState, useEffect } from "react";
 import {
   createPostAction,
@@ -63,10 +64,10 @@ export default function PostForm({ post, mode }: PostFormProps) {
   };
 
   return (
-    <form
-      action={mode === "create" ? createPostAction : updatePostAction}
-      className="space-y-6"
-    >
+    <form action={mode === "create" ? createPostAction : updatePostAction} className="space-y-6">
+      {/* Auto-publish all posts */}
+      <input type="hidden" name="published" value="true" />
+
       {mode === "edit" && post && (
         <input type="hidden" name="id" value={post.id} />
       )}
@@ -77,7 +78,7 @@ export default function PostForm({ post, mode }: PostFormProps) {
           <Input
             id="title"
             name="title"
-            placeholder="Enter title"
+            placeholder="Give your thoughts a meaningful title"
             defaultValue={post?.title || ""}
             required
           />
@@ -88,7 +89,7 @@ export default function PostForm({ post, mode }: PostFormProps) {
           <Textarea
             id="excerpt"
             name="excerpt"
-            placeholder="Brief summary of your content"
+            placeholder="Summarize your emotional journey briefly"
             defaultValue={post?.excerpt || ""}
             rows={2}
           />
@@ -99,7 +100,7 @@ export default function PostForm({ post, mode }: PostFormProps) {
           <Textarea
             id="content"
             name="content"
-            placeholder="Write your content here..."
+            placeholder="Write your thoughts... no judgment here."
             defaultValue={post?.content || ""}
             required
             rows={10}
@@ -112,15 +113,16 @@ export default function PostForm({ post, mode }: PostFormProps) {
           <Input
             id="featuredImage"
             name="featuredImage"
-            placeholder="https://example.com/image.jpg"
+            placeholder="https://example.com/emotional-image.jpg" 
             defaultValue={post?.featured_image || ""}
           />
         </div>
 
+        {/* Thematic Content Types */}
         <div>
           <Label>Content Type</Label>
-          <div className="flex space-x-4 mt-2">
-            <label className="flex items-center space-x-2">
+          <div className="flex flex-wrap gap-4 mt-2">
+            <label className="flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-lg">
               <input
                 type="radio"
                 name="contentType"
@@ -129,10 +131,13 @@ export default function PostForm({ post, mode }: PostFormProps) {
                 onChange={() => setContentType("blog")}
                 className="h-4 w-4"
               />
-              <span>Blog Post</span>
+              <span className="flex items-center gap-2">
+                <Brain className="h-4 w-4 text-blue-600" />
+                Expressing Hidden Thoughts
+              </span>
             </label>
 
-            <label className="flex items-center space-x-2">
+            <label className="flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-lg">
               <input
                 type="radio"
                 name="contentType"
@@ -141,10 +146,13 @@ export default function PostForm({ post, mode }: PostFormProps) {
                 onChange={() => setContentType("guide")}
                 className="h-4 w-4"
               />
-              <span>Guide</span>
+              <span className="flex items-center gap-2">
+                <Eye className="h-4 w-4 text-green-600" />
+                Decoding Emotional Signals
+              </span>
             </label>
 
-            <label className="flex items-center space-x-2">
+            <label className="flex items-center space-x-2 bg-purple-50 px-4 py-2 rounded-lg">
               <input
                 type="radio"
                 name="contentType"
@@ -153,13 +161,17 @@ export default function PostForm({ post, mode }: PostFormProps) {
                 onChange={() => setContentType("comparison")}
                 className="h-4 w-4"
               />
-              <span>Comparison</span>
+              <span className="flex items-center gap-2">
+                <HeartHandshake className="h-4 w-4 text-purple-600" />
+                Navigating Silent Conversations
+              </span>
             </label>
           </div>
         </div>
 
+        {/* Emotional Categories */}
         <div>
-          <Label>Categories</Label>
+          <Label>Themes</Label>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
             {categories.map((category) => (
               <label key={category.id} className="flex items-center space-x-2">
@@ -171,21 +183,22 @@ export default function PostForm({ post, mode }: PostFormProps) {
                     handleCategoryChange(category.id, checked === true)
                   }
                 />
-                <span>{category.name}</span>
+                <span className="capitalize">
+                  {category.name.replace(/_/g, " ")}
+                </span>
               </label>
             ))}
           </div>
         </div>
-
-        <div className="flex items-center space-x-2">
+      </div>
+      <div className="flex items-center space-x-2">
           <Checkbox
             id="published"
             name="published"
             value="true"
             defaultChecked={post?.published || false}
           />
-          <Label htmlFor="published">Publish immediately</Label>
-        </div>
+          <Label htmlFor="published">Post this thoughts in public.</Label>
       </div>
 
       <div className="flex justify-end space-x-2">
@@ -196,7 +209,7 @@ export default function PostForm({ post, mode }: PostFormProps) {
         >
           Cancel
         </Button>
-        <SubmitButton>{mode === "create" ? "Create" : "Update"}</SubmitButton>
+        <SubmitButton>{mode === "create" ? "Share Your Story" : "Update"}</SubmitButton>
       </div>
     </form>
   );

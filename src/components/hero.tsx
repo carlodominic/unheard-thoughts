@@ -18,7 +18,7 @@ export default function Hero() {
           <div className="text-center max-w-4xl mx-auto">
             {/* ✅ Wrap the heading in a flex container for perfect centering */}
             <div className="flex flex-col items-center justify-center">
-              <h1 className="text-5xl sm:text-4.5xl font-bold text-gray-900 mb-8 tracking-tight text-center">
+              <h1 className="text-4xl sm:text-4xl font-bold text-gray-900 mb-8 tracking-tight text-center">
                 Unheard
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                   Thoughts:

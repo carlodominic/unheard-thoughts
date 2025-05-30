@@ -4,11 +4,20 @@ import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { BookOpen, FileText, BarChart2, Search, Filter } from "lucide-react";
+import {
+  BookOpen,
+  FileText,
+  BarChart2,
+  Search,
+  Filter,
+  Brain,
+  Eye,
+  HeartHandshake,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Community Content | PublishPro",
-  description: "Browse all published content from our community of creators",
+  title: "Unspoken Narratives | UnheardThoughts",
+  description: "Explore hidden emotions and silent conversations through our community's authentic expressions.",
 };
 
 export default async function PostsPage() {
@@ -55,16 +64,16 @@ export default async function PostsPage() {
   const contentTypeInfo: Record<string, { label: string; icon: JSX.Element }> =
     {
       blog: {
-        label: "Blog Posts",
-        icon: <BookOpen className="h-5 w-5 text-blue-600" />,
+        label: "Expressing Hidden Thoughts",
+        icon: <Brain className="h-5 w-5 text-blue-600" />,
       },
       guide: {
-        label: "Guides",
-        icon: <FileText className="h-5 w-5 text-green-600" />,
+        label: "Decoding Emotional Signals",
+        icon: <Eye className="h-5 w-5 text-green-600" />,
       },
       comparison: {
-        label: "Comparisons",
-        icon: <BarChart2 className="h-5 w-5 text-purple-600" />,
+        label: "Navigating Silent Conversations",
+        icon: <HeartHandshake className="h-5 w-5 text-purple-600" />,
       },
     };
 
@@ -72,12 +81,11 @@ export default async function PostsPage() {
     <>
       <Navbar />
       <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-        <div className="bg-blue-600 text-white py-16">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl font-bold mb-4">Community Content</h1>
+            <h1 className="text-4xl font-bold mb-4">Unspoken Narratives</h1>
             <p className="text-blue-100 max-w-2xl mx-auto">
-              Discover articles, guides, and comparisons from our community of
-              content creators
+              Explore hidden emotions, silent conversations, and tools for authentic self-expression from our community.
             </p>
           </div>
         </div>
@@ -87,11 +95,11 @@ export default async function PostsPage() {
             <div className="flex items-center gap-2">
               <Search className="h-5 w-5 text-gray-400" />
               <span className="text-gray-600">
-                Browse all published content
+                Explore unspoken stories and insights
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-500">Filter by type:</span>
+              <span className="text-sm text-gray-500">Filter by theme:</span>
               <div className="flex gap-2">
                 {Object.entries(contentTypeInfo).map(([type, info]) => (
                   <Link
@@ -111,14 +119,14 @@ export default async function PostsPage() {
             <div className="text-center py-12 bg-white rounded-xl shadow-sm border">
               <div className="max-w-md mx-auto p-8">
                 <div className="text-blue-600 mb-4">
-                  <FileText className="h-12 w-12 mx-auto" />
+                  <Brain className="h-12 w-12 mx-auto opacity-30" />
                 </div>
-                <h2 className="text-2xl font-semibold mb-2">No Content Yet</h2>
+                <h2 className="text-2xl font-semibold mb-2">No Stories Yet</h2>
                 <p className="text-muted-foreground mb-6">
-                  Be the first to publish content on our platform!
+                  Be the first to share your unspoken thoughts!
                 </p>
                 <Link href="/dashboard/create-post">
-                  <Button>Create Content</Button>
+                  <Button>Share Your Story</Button>
                 </Link>
               </div>
             </div>
@@ -159,7 +167,7 @@ export default async function PostsPage() {
                                   {contentTypeInfo[post.content_type].icon}
                                 </div>
                               ) : (
-                                <BookOpen className="h-16 w-16 text-blue-200" />
+                                <Brain className="h-16 w-16 text-blue-200" />
                               )}
                             </div>
                           )}
