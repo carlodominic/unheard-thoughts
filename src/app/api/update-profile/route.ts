@@ -4,7 +4,7 @@ import { encodedRedirect } from "@/utils/utils";
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const {
     data: { user },
