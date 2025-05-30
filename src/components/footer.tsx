@@ -15,8 +15,7 @@ export default function Footer() {
               Subscribe to Our Newsletter
             </h3>
             <p className="text-gray-600 mb-6">
-              Get the latest content tips, SEO strategies, and publishing
-              templates delivered to your inbox.
+              Receive insights on hidden emotions, techniques for meaningful communication, and prompts to spark deeper connections delivered straight in your inbox.
             </p>
             <form className="flex flex-col sm:flex-row gap-2 max-w-lg mx-auto">
               <input
@@ -38,38 +37,38 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Content Column */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Content</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Expression Tools</h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#blog-templates"
+                  href="#unsaid-thoughts-guide"
                   className="text-gray-600 hover:text-blue-600"
                 >
-                  Blog Templates
+                  Expressing Hidden Thoughts
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#comparison-templates"
+                  href="#emotional-cues"
                   className="text-gray-600 hover:text-blue-600"
                 >
-                  Comparison Tables
+                  Reading Unspoken Signals
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#guide-templates"
+                  href="#communication-strategies"
                   className="text-gray-600 hover:text-blue-600"
                 >
-                  Guide Templates
+                  Breaking the Silence
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#seo-tools"
+                  href="#digital-expression"
                   className="text-gray-600 hover:text-blue-600"
                 >
-                  SEO Tools
+                  Emojis & Digital Cues
                 </Link>
               </li>
             </ul>
@@ -168,7 +167,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200">
           <div className="text-gray-600 mb-4 md:mb-0">
-            © {currentYear} PublishPro. All rights reserved.
+            ©{currentYear} UnheardThoughts | Created by Carlo Dominic Suaybaguio
           </div>
 
           <div className="flex space-x-6">

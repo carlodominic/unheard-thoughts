@@ -53,7 +53,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-2">
                 <BarChart2 className="w-5 h-5 text-blue-500" />
-                <span>Comparison Tables</span>
+                <span>Comparison Ideas</span>
               </div>
               <div className="flex items-center gap-2">
                 <FileText className="w-5 h-5 text-blue-500" />

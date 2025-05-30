@@ -87,11 +87,11 @@ export default function PostList({ posts }: PostListProps) {
       {posts.length === 0 ? (
         <div className="text-center py-8 bg-muted/30 rounded-lg">
           <p className="text-muted-foreground">
-            You haven't created any content yet.
+            You haven't express any thoughts yet.
           </p>
           <Link href="/dashboard/create-post">
             <Button variant="link" className="mt-2">
-              Create your first post
+              Express your first thoughts
             </Button>
           </Link>
         </div>
@@ -161,7 +161,7 @@ export default function PostList({ posts }: PostListProps) {
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Delete Content</AlertDialogTitle>
+                        <AlertDialogTitle>Delete Thoughts</AlertDialogTitle>
                         <AlertDialogDescription>
                           Are you sure you want to delete "{post.title}"? This
                           action cannot be undone.

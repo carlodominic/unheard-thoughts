@@ -53,18 +53,18 @@ export default function CategoryBlocks() {
   const categories = [
     {
       title: "Blog Posts",
-      description: "SEO-optimized templates for engaging blog content",
+      description: "Templates for engaging blog content",
       icon: <BookOpen className="h-6 w-6" />,
       image:
-        "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80",
+        "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800&q=80",
       link: "#blog-templates",
     },
     {
-      title: "Comparison Tables",
-      description: "Side-by-side product comparison templates",
+      title: "Comparison Ideas",
+      description: "Side-by-side comparison templates",
       icon: <BarChart2 className="h-6 w-6" />,
       image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+        "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800&q=80",
       link: "#comparison-templates",
     },
     {
@@ -81,10 +81,10 @@ export default function CategoryBlocks() {
     <section className="py-16 bg-gray-50" id="templates">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Content Templates</h2>
+          <h2 className="text-3xl font-bold mb-4">Customize How You Express</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Choose from our library of pre-designed, SEO-optimized templates to
-            create content that ranks and converts.
+            Choose from our library of pre-designed  templates to
+            create content in your own taste.
           </p>
         </div>
 

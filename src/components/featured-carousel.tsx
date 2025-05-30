@@ -17,37 +17,37 @@ interface FeaturedItem {
 export default function FeaturedCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Sample featured content
+
   const featuredItems: FeaturedItem[] = [
     {
       id: 1,
-      title: "10 SEO Strategies That Actually Work in 2023",
-      category: "SEO Guide",
+      title: "Decoding Unspoken Communication: 10 Signs People Hide Their True Feelings",
+      category: "Psychology",
       image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+        "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800&q=80",
       excerpt:
-        "Learn the latest SEO techniques that are driving real results for content creators.",
-      slug: "#",
+        "Learn how to recognize subtle cues in body language, tone, and silence that reveal unspoken thoughts.",
+      slug: "#",   
     },
     {
       id: 2,
-      title: "WordPress vs. Headless CMS: A Complete Comparison",
-      category: "Comparison",
+      title: "Silent Minds: Why We Keep Thoughts to Ourselves (and How to Break the Cycle)",
+      category: "Self-Development",
       image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+        "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800&q=80",
       excerpt:
-        "Discover which content management system is right for your publishing needs.",
-      slug: "#",
+        "Explore the psychology behind internal barriers to expression and practical strategies to overcome them.",
+      slug: "#",   
     },
     {
       id: 3,
-      title: "The Ultimate Guide to Content Monetization",
-      category: "Guide",
+      title: "The Language of Emojis: Modern Tools for Expressing Unsayable Thoughts",
+      category: "Digital Culture",
       image:
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80",
+        "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800&q=80",
       excerpt:
-        "Explore multiple revenue streams for your content business with this comprehensive guide.",
-      slug: "#",
+        "How digital communication is reshaping emotional expression in the age of unsaid conversations.",
+      slug: "#",   
     },
   ];
 
