@@ -15,6 +15,27 @@ import {
   HeartHandshake,
 } from "lucide-react";
 
+// Define types
+interface User {
+  name: string;
+  full_name: string | null;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  content_type: string;
+  published: boolean;
+  featured_image: string | null;
+  published_at: string | null;
+  created_at: string;
+  users: User;
+}
+
+type GroupedPosts = Record<string, Post[]>;
+
 export const metadata: Metadata = {
   title: "Unspoken Narratives | UnheardThoughts",
   description: "Explore hidden emotions and silent conversations through our community's authentic expressions.",
@@ -33,7 +54,7 @@ export default async function PostsPage() {
     `,
     )
     .eq("published", true)
-    .order("published_at", { ascending: false });
+    .order("published_at", { ascending: false }) as { data: Post[] | null; error: any };
 
   if (error) {
     console.error("Error fetching posts:", error);
@@ -51,31 +72,30 @@ export default async function PostsPage() {
   // Group posts by content type
   const groupedPosts =
     posts?.reduce(
-      (acc, post) => {
+      (acc: GroupedPosts, post) => {
         const type = post.content_type;
         if (!acc[type]) acc[type] = [];
         acc[type].push(post);
         return acc;
       },
-      {} as Record<string, typeof posts>,
+      {} as GroupedPosts,
     ) || {};
 
   // Content type labels and icons
-  const contentTypeInfo: Record<string, { label: string; icon: JSX.Element }> =
-    {
-      blog: {
-        label: "Expressing Hidden Thoughts",
-        icon: <Brain className="h-5 w-5 text-blue-600" />,
-      },
-      guide: {
-        label: "Decoding Emotional Signals",
-        icon: <Eye className="h-5 w-5 text-green-600" />,
-      },
-      comparison: {
-        label: "Navigating Silent Conversations",
-        icon: <HeartHandshake className="h-5 w-5 text-purple-600" />,
-      },
-    };
+  const contentTypeInfo: Record<string, { label: string; icon: JSX.Element }> = {
+    blog: {
+      label: "Expressing Hidden Thoughts",
+      icon: <Brain className="h-5 w-5 text-blue-600" />,
+    },
+    guide: {
+      label: "Decoding Emotional Signals",
+      icon: <Eye className="h-5 w-5 text-green-600" />,
+    },
+    comparison: {
+      label: "Navigating Silent Conversations",
+      icon: <HeartHandshake className="h-5 w-5 text-purple-600" />,
+    },
+  };
 
   return (
     <>

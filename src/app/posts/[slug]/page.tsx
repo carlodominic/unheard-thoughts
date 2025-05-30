@@ -5,6 +5,32 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "lucide-react";
 
+// Define types for better type safety
+interface Category {
+  name: string;
+  slug: string;
+}
+
+interface User {
+  name: string;
+  full_name: string | null;
+  email: string;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  content: string;
+  excerpt: string | null;
+  slug: string;
+  published: boolean;
+  featured_image: string | null;
+  published_at: string | null;
+  created_at: string;
+  content_type: string;
+  users: User;
+}
+
 // ✅ Updated type: params is now a Promise
 type Props = {
   params: Promise<{ slug: string }>;
@@ -18,9 +44,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { data: post } = await supabase
     .from("posts")
     .select("title, excerpt")
-    .eq("slug", slug) // ✅ Use resolved slug
+    .eq("slug", slug)
     .eq("published", true)
-    .single();
+    .single() as { data: Pick<Post, "title" | "excerpt"> | null };
 
   if (!post) {
     return {
@@ -47,26 +73,26 @@ export default async function PostPage({ params }: Props) {
       *,
       users!inner(name, full_name, email)
     `)
-    .eq("slug", slug) // ✅ Use resolved slug
+    .eq("slug", slug)
     .eq("published", true)
-    .single();
+    .single() as { data: Post | null; error: any };
 
   if (error || !post) {
     notFound();
   }
 
-  // Fetch post categories
+  // Fetch post categories with proper typing
   const { data: postCategories } = await supabase
     .from("post_categories")
     .select(`
       categories!inner(name, slug)
     `)
-    .eq("post_id", post.id);
+    .eq("post_id", post.id) as { data: { categories: Category }[] | null };
 
   const categories = postCategories?.map((pc) => pc.categories) || [];
 
   // Format the date
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string): string => {
     return new Date(dateString).toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
@@ -79,12 +105,11 @@ export default async function PostPage({ params }: Props) {
     post.users.full_name || post.users.name || post.users.email;
 
   // Format content type
-  const contentTypeLabel =
-    {
-      blog: "Blog Post",
-      guide: "Guide",
-      comparison: "Comparison",
-    }[post.content_type] || post.content_type;
+  const contentTypeLabel = ({
+    blog: "Blog Post",
+    guide: "Guide",
+    comparison: "Comparison",
+  } as Record<string, string>)[post.content_type] || post.content_type;
 
   return (
     <main className="container mx-auto px-4 py-8 max-w-4xl">
@@ -119,7 +144,7 @@ export default async function PostPage({ params }: Props) {
             <div className="flex items-center gap-2 ml-auto">
               <span>Categories:</span>
               <div className="flex flex-wrap gap-1">
-                {categories.map((category, index) => (
+                {categories.map((category: Category, index: number) => (
                   <span
                     key={index}
                     className="bg-secondary/50 px-2 py-0.5 rounded-full text-xs"
@@ -142,7 +167,7 @@ export default async function PostPage({ params }: Props) {
       <article className="prose prose-sm sm:prose lg:prose-lg mx-auto dark:prose-invert">
         {post.content
           .split("\n")
-          .map((paragraph, index) =>
+          .map((paragraph: string, index: number) =>
             paragraph ? <p key={index}>{paragraph}</p> : <br key={index} />,
           )}
       </article>
