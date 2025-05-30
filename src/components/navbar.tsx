@@ -22,7 +22,7 @@ export default async function Navbar() {
             className="text-2xl font-bold text-blue-600 flex items-center"
           >
             <BookOpen className="mr-2 h-6 w-6" />
-            Unheard Thoughts
+            UnheardThoughts
           </Link>
           <button
             className="md:hidden text-gray-600 hover:text-blue-600"

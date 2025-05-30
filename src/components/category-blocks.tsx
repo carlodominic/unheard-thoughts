@@ -1,4 +1,4 @@
-import { BookOpen, BarChart2, FileText } from "lucide-react";
+import { Brain, MessageSquare, Eye } from "lucide-react";
 import Link from "next/link";
 
 interface CategoryProps {
@@ -28,7 +28,7 @@ const Category = ({ title, description, icon, image, link }: CategoryProps) => {
           href={link}
           className="inline-flex items-center text-sm font-medium text-white hover:text-blue-200 transition-colors"
         >
-          Explore Templates
+          Explore Tools
           <svg
             className="ml-2 w-4 h-4"
             fill="none"
@@ -52,39 +52,41 @@ const Category = ({ title, description, icon, image, link }: CategoryProps) => {
 export default function CategoryBlocks() {
   const categories = [
     {
-      title: "Blog Posts",
-      description: "Templates for engaging blog content",
-      icon: <BookOpen className="h-6 w-6" />,
+      title: "Unspoken Thoughts",
+      description:
+        "Templates to articulate hidden emotions and internal conflicts",
+      icon: <Brain className="h-6 w-6" />,
       image:
         "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800&q=80",
-      link: "#blog-templates",
+      link: "#unsaid-thoughts-tools", 
     },
     {
-      title: "Comparison Ideas",
-      description: "Side-by-side comparison templates",
-      icon: <BarChart2 className="h-6 w-6" />,
+      title: "Silent Signals",
+      description:
+        "Guides to decode body language, tone, and digital communication cues",
+      icon: <Eye className="h-6 w-6" />,
       image:
         "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800&q=80",
-      link: "#comparison-templates",
+      link: "#silent-signal-guides", 
     },
     {
-      title: "Comprehensive Guides",
-      description: "In-depth guide templates with rich schema markup",
-      icon: <FileText className="h-6 w-6" />,
+      title: "Digital Expression",
+      description:
+        "Creative tools for conveying complex feelings through emojis, texts, and media",
+      icon: <MessageSquare className="h-6 w-6" />,
       image:
         "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800&q=80",
-      link: "#guide-templates",
+      link: "#digital-expression-kits", 
     },
   ];
 
   return (
-    <section className="py-16 bg-gray-50" id="templates">
+    <section className="py-16 bg-gray-50" id="tools">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Customize How You Express</h2>
+          <h2 className="text-3xl font-bold mb-4">Express What Goes Unsaid</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Choose from our library of pre-designed  templates to
-            create content in your own taste.
+            Discover frameworks and templates to transform silent struggles into meaningful dialogue.
           </p>
         </div>
 

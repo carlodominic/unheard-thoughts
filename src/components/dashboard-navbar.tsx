@@ -27,7 +27,7 @@ export default function DashboardNavbar() {
             className="text-2xl font-bold text-black-600 flex items-center"
           >
             <BookOpen className="mr-2 h-6 w-6" />
-            PublishPro
+            UnheardThoughts
           </Link>
         </div>
         <div className="flex gap-4 items-center">

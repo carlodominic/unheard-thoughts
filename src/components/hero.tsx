@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
-  Check,
+  HeartHandshake,
   BookOpen,
-  BarChart2,
+  Eye,
   FileText,
 } from "lucide-react";
 
@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-8 tracking-tight">
-              Unheard{" "}
+              Unheard
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 Thoughts:
               </span>{" "}
@@ -34,7 +34,7 @@ export default function Hero() {
                 href="/sign-up"
                 className="inline-flex items-center px-8 py-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-lg font-medium"
               >
-                Start Publishing
+                Start Expressing
                 <ArrowUpRight className="ml-2 w-5 h-5" />
               </Link>
 
@@ -49,15 +49,15 @@ export default function Hero() {
             <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-blue-500" />
-                <span>Blog Posts</span>
+                <span>Expressing Hidden Thoughts</span>
               </div>
               <div className="flex items-center gap-2">
-                <BarChart2 className="w-5 h-5 text-blue-500" />
-                <span>Comparison Ideas</span>
+                <Eye className="w-5 h-5 text-blue-500" />
+                <span>Decoding Emotional Signals</span>
               </div>
               <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-blue-500" />
-                <span>Comprehensive Guides</span>
+                <HeartHandshake className="w-5 h-5 text-blue-500" />
+                <span>Navigating Silent Conversations</span>
               </div>
             </div>
           </div>
