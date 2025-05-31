@@ -31,14 +31,12 @@ interface Post {
   users: User;
 }
 
-// ✅ Updated type: params is now a Promise
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-// ✅ Resolve params in generateMetadata
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params; // ✅ Resolve the Promise
+  const { slug } = await params;
   const supabase = await createClient();
 
   const { data: post } = await supabase
@@ -61,12 +59,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// ✅ Resolve params in the component
 export default async function PostPage({ params }: Props) {
-  const { slug } = await params; // ✅ Resolve the Promise
+  const { slug } = await params; 
   const supabase = await createClient();
 
-  // Fetch the post using resolved slug
   const { data: post, error } = await supabase
     .from("posts")
     .select(`
